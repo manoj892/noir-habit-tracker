@@ -2645,6 +2645,9 @@ canvas {
 .mobile-backdrop {
   position: fixed;
   inset: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
   z-index: 10000;
   background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(16px);
@@ -2656,11 +2659,13 @@ canvas {
   top: 0;
   right: 0;
   bottom: 0;
+  height: 100vh;
+  height: 100dvh;
   width: 280px;
   z-index: 10001;
-  background: rgba(11, 16, 32, 0.72);
-  backdrop-filter: blur(24px) saturate(140%);
-  -webkit-backdrop-filter: blur(24px) saturate(140%);
+  background-color: rgba(11, 16, 32, 0.92);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  backdrop-filter: blur(24px) saturate(160%);
   border-left: 1px solid var(--border);
   box-shadow: -10px 0 40px rgba(0, 0, 0, 0.5);
   display: flex;
