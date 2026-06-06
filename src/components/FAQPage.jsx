@@ -42,37 +42,6 @@ function FAQPage() {
       <div className="future-grid" />
       <motion.div className="future-glow glow-a" style={{ y: -50, x: -50 }} />
 
-      <nav className="future-nav" style={{ padding: '24px', zIndex: 10, position: 'relative' }}>
-        <motion.div
-          className="brand-lockup"
-          initial={{ opacity: 0, filter: "blur(10px)" }}
-          animate={{ opacity: 1, filter: "blur(0px)" }}
-          transition={{ duration: 0.8 }}
-        >
-          <svg className="brand-mark" viewBox="0 0 72 72" aria-hidden="true">
-            <circle className="brand-orbit" cx="36" cy="36" r="28" />
-            <path className="logo-path" d="M20 49L36 17L52 49" fill="none" />
-            <path className="logo-path" d="M28 49L36 33L44 49" fill="none" />
-            <path className="logo-path" d="M25 55H47" fill="none" />
-            <circle className="brand-node" cx="36" cy="17" r="3.2" />
-          </svg>
-          <div className="logo-wordmark">
-            <span className="logo">Noir Habit</span>
-          </div>
-        </motion.div>
-
-        <motion.div
-          className="future-nav-actions"
-          initial={{ opacity: 0, filter: "blur(10px)" }}
-          animate={{ opacity: 1, filter: "blur(0px)" }}
-          transition={{ duration: 0.8, delay: 0.08 }}
-        >
-          <Link to="/" className="secondary-btn nav-link-btn">
-            Back to Home
-          </Link>
-        </motion.div>
-      </nav>
-
       <main className="faq-main">
         <motion.div
           initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
