@@ -55,28 +55,6 @@ function ContactPage() {
         ))}
       </div>
 
-      <nav className="future-nav contact-nav">
-        <motion.div
-          className="brand-lockup"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
-        >
-          <Link to="/" className="brand-lockup" style={{ textDecoration: "none" }}>
-            <svg className="brand-mark" viewBox="0 0 72 72" aria-hidden="true">
-              <circle className="brand-orbit" cx="36" cy="36" r="28" />
-              <path className="logo-path" d="M20 49L36 17L52 49" fill="none" />
-              <path className="logo-path" d="M28 49L36 33L44 49" fill="none" />
-              <path className="logo-path" d="M25 55H47" fill="none" />
-              <circle className="brand-node" cx="36" cy="17" r="3.2" />
-            </svg>
-            <div className="logo-wordmark">
-              <span className="logo">Noir Habit</span>
-            </div>
-          </Link>
-        </motion.div>
-      </nav>
-
       <main className="contact-main">
         <motion.div
           className="contact-header"

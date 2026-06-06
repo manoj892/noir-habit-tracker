@@ -74,43 +74,6 @@ function AboutPage() {
       <motion.div className="future-glow glow-a" />
       <motion.div className="future-glow glow-c" />
 
-      {/* Simplified Navbar for About Page */}
-      <nav className="future-nav" style={{ padding: "24px", position: "relative", zIndex: 10 }}>
-        <motion.div
-          className="brand-lockup"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
-        >
-          <Link to="/" style={{ display: "flex", alignItems: "center", gap: "14px" }}>
-            <svg className="brand-mark" viewBox="0 0 72 72" aria-hidden="true">
-              <circle className="brand-orbit" cx="36" cy="36" r="28" />
-              <path className="logo-path" d="M20 49L36 17L52 49" fill="none" />
-              <path className="logo-path" d="M28 49L36 33L44 49" fill="none" />
-              <path className="logo-path" d="M25 55H47" fill="none" />
-              <circle className="brand-node" cx="36" cy="17" r="3.2" />
-            </svg>
-            <div className="logo-wordmark">
-              <span className="logo">Noir Habit</span>
-            </div>
-          </Link>
-        </motion.div>
-
-        <motion.div
-          className="future-nav-actions"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.1 }}
-        >
-          <Link to="/" className="secondary-btn nav-link-btn">
-            Return Home
-          </Link>
-          <Link to="/tracker" className="primary-btn nav-link-btn">
-            Open Tracker
-          </Link>
-        </motion.div>
-      </nav>
-
       {/* Hero Section */}
       <header 
         ref={heroRef} 
