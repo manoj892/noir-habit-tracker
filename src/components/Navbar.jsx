@@ -5,7 +5,7 @@ import { Link, useLocation } from "react-router-dom"
 const navLinks = [
   { name: "Home", path: "/" },
   { name: "Track", path: "/tracker" },
-  { name: "Coach", path: "/coach" },
+  { name: "AI Coach", path: "/coach", accent: true },
   { name: "About", path: "/about" },
   { name: "FAQ", path: "/faq" },
   { name: "Contact", path: "/contact" },
@@ -13,12 +13,21 @@ const navLinks = [
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
   const location = useLocation()
 
   // Auto-close mobile drawer when route changes
   useEffect(() => {
     setIsOpen(false)
   }, [location.pathname])
+
+  // Track scroll for transparent-to-solid effect
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 12)
+    onScroll()
+    window.addEventListener("scroll", onScroll, { passive: true })
+    return () => window.removeEventListener("scroll", onScroll)
+  }, [])
 
   // Lock background scrolling when drawer is open
   useEffect(() => {
@@ -30,7 +39,7 @@ function Navbar() {
   }, [isOpen])
 
   return (
-    <header className="global-navbar">
+    <header className={`global-navbar ${scrolled ? "is-scrolled" : "is-top"}`}>
       <nav className="navbar-container">
         <Link to="/" className="brand-logo">
           <svg className="brand-mark-small" viewBox="0 0 72 72" aria-hidden="true">
@@ -48,7 +57,7 @@ function Navbar() {
             <Link
               key={link.name}
               to={link.path}
-              className={`nav-item ${location.pathname === link.path ? "active" : ""}`}
+              className={`nav-item ${link.accent ? "nav-item-accent" : ""} ${location.pathname === link.path ? "active" : ""}`}
             >
               {link.name}
             </Link>
@@ -105,7 +114,7 @@ function Navbar() {
                   <Link
                     key={link.name}
                     to={link.path}
-                    className={`mobile-nav-item ${location.pathname === link.path ? "active" : ""}`}
+                    className={`mobile-nav-item ${link.accent ? "mobile-nav-item-accent" : ""} ${location.pathname === link.path ? "active" : ""}`}
                   >
                     {link.name}
                   </Link>
