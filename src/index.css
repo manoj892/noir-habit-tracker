@@ -2549,11 +2549,11 @@ canvas {
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 9999; /* Extreme z-index to sit on top of everything */
-  background: rgba(6, 9, 18, 0.75);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  z-index: 9999;
+  background: rgba(6, 9, 18, 0.94);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
 }
 
 .navbar-container {
@@ -2646,8 +2646,9 @@ canvas {
   position: fixed;
   inset: 0;
   z-index: 10000;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 
 .mobile-drawer {
@@ -2657,7 +2658,9 @@ canvas {
   bottom: 0;
   width: 280px;
   z-index: 10001;
-  background: var(--bg-soft);
+  background: rgba(11, 16, 32, 0.96);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-left: 1px solid var(--border);
   box-shadow: -10px 0 40px rgba(0, 0, 0, 0.5);
   display: flex;
