@@ -341,11 +341,9 @@ canvas {
 }
 
 .active-day {
-  background: linear-gradient(
-    135deg,
-    rgba(111, 92, 255, 0.22),
-    rgba(22, 224, 196, 0.15)
-  );
+  background: linear-gradient(135deg,
+      rgba(111, 92, 255, 0.22),
+      rgba(22, 224, 196, 0.15));
   border-color: rgba(111, 92, 255, 0.42);
 }
 
@@ -502,11 +500,9 @@ canvas {
 
 .toggle-on {
   justify-content: flex-end;
-  background: linear-gradient(
-    135deg,
-    rgba(111, 92, 255, 0.8),
-    rgba(22, 224, 196, 0.8)
-  );
+  background: linear-gradient(135deg,
+      rgba(111, 92, 255, 0.8),
+      rgba(22, 224, 196, 0.8));
 }
 
 .toggle-knob {
@@ -817,14 +813,12 @@ canvas {
 .wave-fill {
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(0, 255, 213, 0.22) 18%,
-    rgba(71, 136, 255, 0.34) 42%,
-    rgba(255, 255, 255, 0.08) 60%,
-    transparent 100%
-  );
+  background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(0, 255, 213, 0.22) 18%,
+      rgba(71, 136, 255, 0.34) 42%,
+      rgba(255, 255, 255, 0.08) 60%,
+      transparent 100%);
   background-size: 220% 100%;
 }
 
@@ -1477,25 +1471,21 @@ canvas {
   min-height: 100%;
   margin: 0 auto;
   overflow: hidden;
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    color-mix(in oklab, var(--home-accent) 60%, transparent),
-    transparent
-  );
+  background: linear-gradient(to bottom,
+      transparent,
+      color-mix(in oklab, var(--home-accent) 60%, transparent),
+      transparent);
 }
 
 .timeline-rail-fill {
   position: absolute;
   inset: 0;
   transform-origin: top center;
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    var(--home-accent),
-    rgba(71, 136, 255, 0.8),
-    transparent
-  );
+  background: linear-gradient(to bottom,
+      transparent,
+      var(--home-accent),
+      rgba(71, 136, 255, 0.8),
+      transparent);
   background-size: 100% 180px;
 }
 
@@ -1592,13 +1582,11 @@ canvas {
   z-index: 2;
   border-radius: 999px;
   background:
-    linear-gradient(
-      180deg,
+    linear-gradient(180deg,
       rgba(0, 255, 213, 0),
       rgba(76, 255, 224, 0.92),
       rgba(69, 137, 255, 0.82),
-      rgba(0, 255, 213, 0)
-    );
+      rgba(0, 255, 213, 0));
   box-shadow:
     0 0 30px rgba(76, 255, 224, 0.45),
     0 0 68px rgba(69, 137, 255, 0.22);
@@ -1623,13 +1611,11 @@ canvas {
   height: 78px;
   transform: translate(-50%, -50%);
   border-radius: 999px;
-  background: linear-gradient(
-    180deg,
-    rgba(76, 255, 224, 0.05),
-    rgba(76, 255, 224, 0.15),
-    rgba(69, 137, 255, 0.16),
-    rgba(76, 255, 224, 0.05)
-  );
+  background: linear-gradient(180deg,
+      rgba(76, 255, 224, 0.05),
+      rgba(76, 255, 224, 0.15),
+      rgba(69, 137, 255, 0.16),
+      rgba(76, 255, 224, 0.05));
   filter: blur(26px);
 }
 
@@ -1696,12 +1682,10 @@ canvas {
 .final-cta-box {
   padding: 48px;
   border-radius: 36px;
-  background: linear-gradient(
-    135deg,
-    rgba(0, 255, 214, 0.08),
-    rgba(58, 124, 255, 0.08),
-    var(--home-surface)
-  );
+  background: linear-gradient(135deg,
+      rgba(0, 255, 214, 0.08),
+      rgba(58, 124, 255, 0.08),
+      var(--home-surface));
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   box-shadow: 0 28px 90px rgba(0, 0, 0, 0.28);
@@ -2143,7 +2127,7 @@ canvas {
   .cylinder-face h3 {
     font-size: clamp(16px, 5vw, 20px);
   }
-  
+
   /* FAQ Responsive Mobile Adjustments */
   .faq-main {
     padding: 100px 20px 80px;
@@ -2172,6 +2156,7 @@ canvas {
     transition: none !important;
   }
 }
+
 /* ========================================== */
 /* CONTACT PAGE STYLES                        */
 /* ========================================== */
@@ -2217,13 +2202,15 @@ canvas {
 }
 
 .contact-card {
-  position: relative !important; /* Overrides the absolute positioning from hero-core-card */
+  position: relative !important;
+  /* Overrides the absolute positioning from hero-core-card */
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   min-height: 320px;
   padding: 40px;
-  transform: none; /* Stops it from animating like the homepage ones */
+  transform: none;
+  /* Stops it from animating like the homepage ones */
 }
 
 .contact-card h3 {
@@ -2311,12 +2298,14 @@ canvas {
   .contact-grid {
     grid-template-columns: 1fr;
   }
+
   .full-width-card {
     grid-column: 1;
     flex-direction: column;
     align-items: flex-start;
   }
 }
+
 /* ========================================== */
 /* AI COACH PAGE EXTENSIONS                   */
 /* ========================================== */
@@ -2383,6 +2372,7 @@ canvas {
 .terminal-message-matrix::-webkit-scrollbar {
   width: 4px;
 }
+
 .terminal-message-matrix::-webkit-scrollbar-thumb {
   background: var(--home-border);
   border-radius: 999px;
@@ -2425,7 +2415,9 @@ canvas {
 }
 
 @keyframes pulseAlpha {
-  50% { opacity: 0.45; }
+  50% {
+    opacity: 0.45;
+  }
 }
 
 .terminal-control-dock {
@@ -2469,13 +2461,16 @@ canvas {
     height: auto;
     padding: 0 16px;
   }
+
   .coach-sidebar-panel {
     height: auto;
   }
+
   .coach-chat-terminal {
     height: 600px;
   }
 }
+
 /* AI Coach Mode Toggle Styles */
 .mode-toggle-wrapper {
   display: flex;
@@ -2537,9 +2532,11 @@ canvas {
   background: var(--danger);
   box-shadow: 0 0 10px rgba(255, 99, 99, 0.5);
 }
+
 /* GLOBAL NAVBAR & LAYOUT FIXES */
 .app-layout {
-  padding-top: 76px; /* Pushes content down so navbar doesn't cut the screen */
+  padding-top: 76px;
+  /* Pushes content down so navbar doesn't cut the screen */
   width: 100%;
   min-height: 100vh;
 }
@@ -2572,7 +2569,8 @@ canvas {
   padding: 18px 24px;
   width: 100%;
   max-width: 1280px;
-  margin: 0 auto; /* Align the header to the same gutter as page content */
+  margin: 0 auto;
+  /* Align the header to the same gutter as page content */
   transition: padding var(--transition);
 }
 
@@ -2664,7 +2662,9 @@ canvas {
   transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.nav-item:hover, .nav-item:focus-visible, .nav-item.active {
+.nav-item:hover,
+.nav-item:focus-visible,
+.nav-item.active {
   color: var(--accent-2);
 }
 
@@ -2798,6 +2798,7 @@ canvas {
   .desktop-menu {
     display: none;
   }
+
   .mobile-toggle-btn {
     display: block;
   }
