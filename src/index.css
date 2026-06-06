@@ -2550,18 +2550,35 @@ canvas {
   left: 0;
   width: 100%;
   z-index: 9999;
-  background: rgba(6, 9, 18, 0.94);
-  backdrop-filter: blur(28px);
-  -webkit-backdrop-filter: blur(28px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition: background var(--transition), border-color var(--transition),
+    backdrop-filter var(--transition), box-shadow var(--transition);
+}
+
+.global-navbar.is-scrolled {
+  background: rgba(6, 9, 18, 0.72);
+  backdrop-filter: blur(24px) saturate(140%);
+  -webkit-backdrop-filter: blur(24px) saturate(140%);
+  border-bottom-color: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.28);
 }
 
 .navbar-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 24px;
-  width: 100%; /* Allows it to map identically to the rest of the app's margins */
+  gap: 24px;
+  padding: 18px 24px;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto; /* Align the header to the same gutter as page content */
+  transition: padding var(--transition);
+}
+
+.global-navbar.is-scrolled .navbar-container {
+  padding-top: 12px;
+  padding-bottom: 12px;
 }
 
 /* Isolated Global Logo SVG Classes */
@@ -2575,12 +2592,28 @@ canvas {
   text-transform: uppercase;
   color: var(--text);
   text-decoration: none;
+  transition: opacity var(--transition);
+}
+
+.brand-logo:hover {
+  opacity: 0.85;
 }
 
 .brand-mark-small {
   width: 32px;
   height: 32px;
   flex-shrink: 0;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.brand-logo:hover .brand-mark-small {
+  transform: rotate(-8deg) scale(1.06);
+}
+
+.brand-logo:focus-visible {
+  outline: 2px solid var(--accent-2);
+  outline-offset: 4px;
+  border-radius: 8px;
 }
 
 .global-nav-orbit {
@@ -2608,15 +2641,41 @@ canvas {
 }
 
 .nav-item {
+  position: relative;
   color: var(--muted);
   font-size: 14px;
   font-weight: 500;
   text-decoration: none;
+  padding: 4px 2px;
   transition: color var(--transition);
 }
 
-.nav-item:hover, .nav-item.active {
+.nav-item::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  height: 2px;
+  width: 100%;
+  background: var(--accent-2);
+  border-radius: 2px;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.nav-item:hover, .nav-item:focus-visible, .nav-item.active {
   color: var(--accent-2);
+}
+
+.nav-item:hover::after,
+.nav-item:focus-visible::after,
+.nav-item.active::after {
+  transform: scaleX(1);
+}
+
+.nav-item:focus-visible {
+  outline: none;
 }
 
 .nav-divider {
@@ -2629,6 +2688,12 @@ canvas {
   padding: 8px 18px;
   min-height: auto;
   font-size: 14px;
+  transition: transform var(--transition), border-color var(--transition),
+    color var(--transition), background var(--transition);
+}
+
+.nav-signin-btn:hover {
+  transform: translateY(-1px);
 }
 
 .mobile-toggle-btn {
@@ -2699,10 +2764,18 @@ canvas {
 }
 
 .mobile-nav-item {
+  display: inline-block;
   color: var(--text);
   font-size: 18px;
   font-weight: 500;
   text-decoration: none;
+  transition: color var(--transition), transform var(--transition);
+}
+
+.mobile-nav-item:hover,
+.mobile-nav-item:focus-visible {
+  color: var(--accent-2);
+  transform: translateX(4px);
 }
 
 .mobile-nav-item.active {
