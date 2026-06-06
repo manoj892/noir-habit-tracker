@@ -7,16 +7,6 @@ function TrackerPage() {
     <>
       <ScrollProgress />
       <div className="page tracker-page">
-        <nav className="tracker-page-nav">
-          <div className="logo">HabitFlow</div>
-
-          <div className="tracker-page-nav-actions">
-            <Link to="/" className="secondary-btn nav-link-btn">
-              Back Home
-            </Link>
-          </div>
-        </nav>
-
         <section className="tracker-page-hero">
           <p className="eyebrow">Your system</p>
           <h1>Track habits week by week.</h1>
