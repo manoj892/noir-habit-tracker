@@ -5,7 +5,7 @@ import { Link, useLocation } from "react-router-dom"
 const navLinks = [
   { name: "Home", path: "/" },
   { name: "Track", path: "/tracker" },
-  { name: "AI Coach", path: "/coach", accent: true },
+  { name: "Coach", path: "/coach" },
   { name: "About", path: "/about" },
   { name: "FAQ", path: "/faq" },
   { name: "Contact", path: "/contact" },
@@ -21,14 +21,6 @@ function Navbar() {
     setIsOpen(false)
   }, [location.pathname])
 
-  // Track scroll for transparent-to-solid effect
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12)
-    onScroll()
-    window.addEventListener("scroll", onScroll, { passive: true })
-    return () => window.removeEventListener("scroll", onScroll)
-  }, [])
-
   // Lock background scrolling when drawer is open
   useEffect(() => {
     if (isOpen) {
@@ -38,8 +30,23 @@ function Navbar() {
     }
   }, [isOpen])
 
+  // Track scroll position so the header can attach a backdrop after leaving the top
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 12)
+    }
+    handleScroll()
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
   return (
-    <header className={`global-navbar ${scrolled ? "is-scrolled" : "is-top"}`}>
+    <motion.header
+      className={`global-navbar ${scrolled ? "is-scrolled" : ""}`}
+      initial={{ y: -24, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+    >
       <nav className="navbar-container">
         <Link to="/" className="brand-logo">
           <svg className="brand-mark-small" viewBox="0 0 72 72" aria-hidden="true">
@@ -57,7 +64,7 @@ function Navbar() {
             <Link
               key={link.name}
               to={link.path}
-              className={`nav-item ${link.accent ? "nav-item-accent" : ""} ${location.pathname === link.path ? "active" : ""}`}
+              className={`nav-item ${location.pathname === link.path ? "active" : ""}`}
             >
               {link.name}
             </Link>
@@ -91,6 +98,7 @@ function Navbar() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
               onClick={() => setIsOpen(false)}
             />
             <motion.div
@@ -102,33 +110,57 @@ function Navbar() {
             >
               <div className="mobile-drawer-header">
                 <span>Menu</span>
-                <button onClick={() => setIsOpen(false)}>
+                <button onClick={() => setIsOpen(false)} aria-label="Close menu">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="24" height="24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                   </svg>
                 </button>
               </div>
-              
-              <div className="mobile-drawer-links">
+
+              <motion.div
+                className="mobile-drawer-links"
+                initial="hidden"
+                animate="visible"
+                variants={{
+                  hidden: {},
+                  visible: { transition: { staggerChildren: 0.06, delayChildren: 0.12 } },
+                }}
+              >
                 {navLinks.map((link) => (
-                  <Link
+                  <motion.div
                     key={link.name}
-                    to={link.path}
-                    className={`mobile-nav-item ${link.accent ? "mobile-nav-item-accent" : ""} ${location.pathname === link.path ? "active" : ""}`}
+                    variants={{
+                      hidden: { opacity: 0, x: 24 },
+                      visible: { opacity: 1, x: 0 },
+                    }}
+                    transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
                   >
-                    {link.name}
-                  </Link>
+                    <Link
+                      to={link.path}
+                      className={`mobile-nav-item ${location.pathname === link.path ? "active" : ""}`}
+                    >
+                      {link.name}
+                    </Link>
+                  </motion.div>
                 ))}
                 <div className="mobile-nav-divider"></div>
-                <Link to="/tracker" className="primary-btn mobile-signin-btn">
-                  Sign In
-                </Link>
-              </div>
+                <motion.div
+                  variants={{
+                    hidden: { opacity: 0, x: 24 },
+                    visible: { opacity: 1, x: 0 },
+                  }}
+                  transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  <Link to="/tracker" className="primary-btn mobile-signin-btn">
+                    Sign In
+                  </Link>
+                </motion.div>
+              </motion.div>
             </motion.div>
           </>
         )}
       </AnimatePresence>
-    </header>
+    </motion.header>
   )
 }
 
