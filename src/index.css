@@ -2550,10 +2550,18 @@ canvas {
   left: 0;
   width: 100%;
   z-index: 9999; /* Extreme z-index to sit on top of everything */
-  background: rgba(6, 9, 18, 0.75);
+  background: transparent;
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+  border-bottom: 1px solid transparent;
+  transition: background 0.35s ease, backdrop-filter 0.35s ease, border-color 0.35s ease;
+}
+
+.global-navbar.is-scrolled {
+  background: rgba(6, 9, 18, 0.72);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .navbar-container {
@@ -2617,6 +2625,20 @@ canvas {
 
 .nav-item:hover, .nav-item.active {
   color: var(--accent-2);
+}
+
+.nav-item-accent {
+  color: var(--accent);
+}
+
+.nav-item-accent:hover,
+.nav-item-accent.active {
+  color: var(--accent);
+  filter: brightness(1.2);
+}
+
+.mobile-nav-item-accent {
+  color: var(--accent);
 }
 
 .nav-divider {
