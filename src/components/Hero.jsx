@@ -1,11 +1,8 @@
 import { motion } from "motion/react"
-import Navbar from "./Navbar"
 
 function Hero() {
   return (
     <header className="hero">
-      <Navbar />
-
       <div className="hero-content">
         <motion.p
           className="eyebrow"

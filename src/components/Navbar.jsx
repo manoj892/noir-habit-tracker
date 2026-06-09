@@ -5,6 +5,7 @@ import { Link, useLocation } from "react-router-dom"
 const navLinks = [
   { name: "Home", path: "/" },
   { name: "Track", path: "/tracker" },
+  { name: "Analytics", path: "/analytics" },
   { name: "Coach", path: "/coach" },
   { name: "About", path: "/about" },
   { name: "FAQ", path: "/faq" },
@@ -16,12 +17,6 @@ function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const location = useLocation()
 
-  // Auto-close mobile drawer when route changes
-  useEffect(() => {
-    setIsOpen(false)
-  }, [location.pathname])
-
-  // Lock background scrolling when drawer is open
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden"
@@ -30,7 +25,6 @@ function Navbar() {
     }
   }, [isOpen])
 
-  // Track scroll position so the header can attach a backdrop after leaving the top
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 12)
@@ -56,7 +50,7 @@ function Navbar() {
             <path className="global-nav-path" d="M25 55H47" fill="none" />
             <circle className="global-nav-node" cx="36" cy="17" r="3.2" />
           </svg>
-          <span>Noir Habit</span>
+          <span>Obsidure</span>
         </Link>
 
         <div className="desktop-menu">
@@ -65,12 +59,13 @@ function Navbar() {
               key={link.name}
               to={link.path}
               className={`nav-item ${location.pathname === link.path ? "active" : ""}`}
+              onClick={() => setIsOpen(false)}
             >
               {link.name}
             </Link>
           ))}
           <div className="nav-divider"></div>
-          <Link to="/tracker" className="secondary-btn nav-signin-btn">
+          <Link to="/signin" className="secondary-btn nav-signin-btn" onClick={() => setIsOpen(false)}>
             Sign In
           </Link>
         </div>
@@ -138,6 +133,7 @@ function Navbar() {
                     <Link
                       to={link.path}
                       className={`mobile-nav-item ${location.pathname === link.path ? "active" : ""}`}
+                      onClick={() => setIsOpen(false)}
                     >
                       {link.name}
                     </Link>
@@ -151,7 +147,7 @@ function Navbar() {
                   }}
                   transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
                 >
-                  <Link to="/tracker" className="primary-btn mobile-signin-btn">
+                  <Link to="/signin" className="primary-btn mobile-signin-btn" onClick={() => setIsOpen(false)}>
                     Sign In
                   </Link>
                 </motion.div>

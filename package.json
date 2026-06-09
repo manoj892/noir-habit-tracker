@@ -10,13 +10,18 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@google/genai": "^2.8.0",
     "@gsap/react": "^2.1.2",
     "gsap": "^3.15.0",
+    "highcharts": "^12.6.0",
+    "highcharts-react-official": "^3.2.3",
     "motion": "^12.40.0",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
-    "react-router-dom": "^7.16.0"
+    "react-router-dom": "^7.16.0",
+    "recharts": "^3.8.1",
+    "three": "^0.184.0"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

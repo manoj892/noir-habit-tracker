@@ -1,0 +1,109 @@
+/* SharePage.css */
+.share-page-wrapper {
+  min-height: 100vh;
+  background: #070b16;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.share-header {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 680px;
+  padding: 32px 24px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.share-brand {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #fff;
+}
+
+.share-badge {
+  font-size: 11px;
+  color: #52525b;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid #27272a;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+.share-container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 680px;
+  padding: 24px 24px 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.share-title-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #27272a;
+}
+
+.share-conv-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.share-date {
+  font-size: 12px;
+  color: #52525b;
+  white-space: nowrap;
+}
+
+.share-messages {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.share-footer {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #52525b;
+  padding-top: 24px;
+  border-top: 1px solid #27272a;
+  flex-wrap: wrap;
+}
+
+.share-footer-link {
+  color: #a1a1aa;
+  text-decoration: none;
+  font-weight: 500;
+}
+.share-footer-link:hover { color: #fff; }
+
+.share-error,
+.share-loading {
+  position: relative;
+  z-index: 2;
+  margin-top: 40vh;
+  font-size: 14px;
+  color: #52525b;
+}
+
+@media (max-width: 768px) {
+  .share-header { padding: 20px 16px 0; }
+  .share-container { padding: 16px 16px 48px; }
+  .share-conv-title { font-size: 17px; }
+}

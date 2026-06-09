@@ -10,6 +10,10 @@ import AboutPage from "./components/AboutPage"
 import FAQPage from "./components/FAQPage" 
 import ContactPage from "./components/ContactPage"
 import CoachPage from "./components/CoachPage"
+import AnalyticsPage from "./components/AnalyticsPage"
+import SharePage from "./components/SharePage"
+import SignInPage from "./components/SignInPage"
+import SignUpPage from "./components/SignUpPage"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -35,6 +39,10 @@ function AnimatedRoutes() {
           <Route path="/contact" element={<ContactPage />} /> 
           <Route path="/tracker" element={<TrackerPage />} />
           <Route path="/coach" element={<CoachPage />} />
+          <Route path="/analytics" element={<AnalyticsPage />} />
+          <Route path="/share" element={<SharePage />} />
+          <Route path="/signin" element={<SignInPage />} />
+          <Route path="/signup" element={<SignUpPage />} />
         </Routes>
       </motion.div>
     </AnimatePresence>
