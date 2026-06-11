@@ -672,7 +672,7 @@ canvas {
 .hero-glyph {
   position: absolute;
   z-index: 1;
-  color: color-mix(in oklab, var(--home-accent) 70%, white);
+  color: color-mix(in oklab, var(--accent) 70%, white);
   opacity: 0.72;
   pointer-events: none;
   text-shadow: 0 0 18px color-mix(in oklab, var(--home-accent) 28%, transparent);
@@ -1341,8 +1341,9 @@ canvas {
   );
 }
 
-/* Cylinder section */
-
+/* =============================================== */
+/* CYLINDER CORE GRAPHICS STRUCTS */
+/* =============================================== */
 .cylinder-feature-section {
   position: relative;
   padding: 0 24px 180px;
@@ -1355,16 +1356,8 @@ canvas {
   border-radius: 36px;
   border: 1px solid var(--home-border);
   background:
-    radial-gradient(
-      circle at 26% 24%,
-      rgba(24, 255, 220, 0.1),
-      transparent 26%
-    ),
-    radial-gradient(
-      circle at 74% 72%,
-      rgba(74, 128, 255, 0.09),
-      transparent 30%
-    ),
+    radial-gradient(circle at 26% 24%, rgba(24, 255, 220, 0.1), transparent 26%),
+    radial-gradient(circle at 74% 72%, rgba(74, 128, 255, 0.09), transparent 30%),
     linear-gradient(180deg, rgba(8, 11, 22, 0.96), rgba(7, 10, 19, 0.98));
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
@@ -1387,24 +1380,28 @@ canvas {
   position: relative;
   min-height: 100vh;
   perspective: 1800px;
+  /* PERFECT 3D PARALLAX ALIGNMENT FOR THE CAMERA: */
+  perspective-origin: 66% 50%;
   transform-style: preserve-3d;
 }
 
 .cylinder-core {
   position: absolute;
-  top: 10%;
-  bottom: 8%;
+  left: 66%;
+  top: 54%; /* ADJUSTED UPWARD FOR DESKTOP SYMMETRY */
+  height: 84%;
   width: 14px;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
   z-index: 2;
   border-radius: 999px;
-  background: linear-gradient(
-    180deg,
-    rgba(0, 255, 213, 0),
-    rgba(76, 255, 224, 0.92),
-    rgba(69, 137, 255, 0.82),
-    rgba(0, 255, 213, 0)
-  );
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0, 255, 213, 0),
+      rgba(76, 255, 224, 0.92),
+      rgba(69, 137, 255, 0.82),
+      rgba(0, 255, 213, 0)
+    );
   box-shadow:
     0 0 30px rgba(76, 255, 224, 0.45),
     0 0 68px rgba(69, 137, 255, 0.22);
@@ -1417,12 +1414,7 @@ canvas {
   width: 2px;
   height: 104%;
   transform: translateX(-50%);
-  background: linear-gradient(
-    180deg,
-    transparent,
-    rgba(255, 255, 255, 0.95),
-    transparent
-  );
+  background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.95), transparent);
   opacity: 0.72;
 }
 
@@ -1451,11 +1443,16 @@ canvas {
   transform-style: preserve-3d;
 }
 
+/* =============================================== */
+/* UNIFORM VOLUMETRIC 3D GLASS SLABS */
+/* =============================================== */
+
 .cylinder-item {
   position: absolute;
-  top: 56%;
-  width: min(300px, calc(100vw - 64px));
-  height: 180px;
+  left: 66%;
+  top: 56%; /* DESKTOP CENTER VALUE */
+  width: 260px;
+  height: 150px;
   transform-style: preserve-3d;
   transform-origin: center center;
   pointer-events: none;
@@ -1465,32 +1462,15 @@ canvas {
 .cylinder-item::before {
   content: "";
   position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(76, 255, 224, 0.25) 0%,
-    rgba(69, 137, 255, 0.15) 100%
-  );
-  border-radius: 12px;
-  transform: translateZ(8px);
-  box-shadow:
-    inset 0 1px 2px rgba(255, 255, 255, 0.15),
-    inset 0 -1px 2px rgba(0, 0, 0, 0.3);
+  inset: -1px;
+  border-radius: 16px;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.22), transparent 40%, rgba(0,255,213,0.25));
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: xor;
+  transform: translateZ(0px); 
   pointer-events: none;
-}
-
-.cylinder-item::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(76, 255, 224, 0.15),
-    transparent 60%
-  );
-  border-radius: 12px;
-  transform: translateZ(4px);
-  pointer-events: none;
+  z-index: 10;
 }
 
 .cylinder-face {
@@ -1498,136 +1478,51 @@ canvas {
   inset: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
+  align-items: flex-start;
+  text-align: left;
   justify-content: center;
+  padding: 24px 28px;
+  border-radius: 16px;
   color: var(--home-text);
-  background: rgba(10, 14, 26, 0.56);
-  border: 2px solid rgba(76, 255, 224, 0.5);
-  backdrop-filter: blur(26px);
-  -webkit-backdrop-filter: blur(26px);
-  border-radius: 12px;
-  box-shadow:
-    inset 0 2px 8px rgba(255, 255, 255, 0.1),
-    inset 0 -2px 8px rgba(0, 0, 0, 0.5),
-    inset 1px 0 2px rgba(76, 255, 224, 0.3),
-    inset -1px 0 2px rgba(69, 137, 255, 0.3),
-    0 50px 120px rgba(0, 0, 0, 0.6),
-    0 0 100px rgba(78, 255, 228, 0.3);
+  background: rgba(8, 12, 22, 0.64);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(28px) saturate(120%);
+  -webkit-backdrop-filter: blur(28px) saturate(120%);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.06);
   transform-style: preserve-3d;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
 
-.cylinder-face span {
-  font-size: 13px;
+.cylinder-face h3 {
+  margin-top: 8px;
+  margin-bottom: 0;
+  font-size: clamp(16px, 2vw, 20px);
+  line-height: 1.25;
+  color: var(--home-text);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.cylinder-face span,
+.cylinder-face .card-label {
+  font-size: 11px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: color-mix(in oklab, var(--home-accent) 75%, white);
+  color: color-mix(in oklab, var(--home-accent) 85%, white);
 }
 
 .cylinder-face-front {
-  background:
-    linear-gradient(135deg, rgba(78, 255, 228, 0.15), rgba(69, 137, 255, 0.08)),
-    radial-gradient(
-      circle at 30% 20%,
-      rgba(69, 137, 255, 0.25),
-      transparent 60%
-    ),
-    rgba(12, 18, 36, 0.85);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.15),
-    inset 0 -12px 0 rgba(78, 255, 228, 0.12),
-    inset 0 -6px 0 rgba(69, 137, 255, 0.08),
-    inset 0 0 50px rgba(76, 255, 224, 0.15),
-    0 40px 100px rgba(0, 0, 0, 0.5),
-    0 0 80px rgba(78, 255, 228, 0.25),
-    0 0 40px rgba(69, 137, 255, 0.18);
-  position: relative;
-  border: 1px solid rgba(76, 255, 224, 0.5);
+  transform: rotateY(0deg) translateZ(20px);
 }
 
 .cylinder-face-back {
-  background:
-    radial-gradient(circle at center, rgba(0, 255, 213, 0.15), transparent 70%),
-    linear-gradient(180deg, rgba(76, 255, 224, 0.1), rgba(69, 137, 255, 0.08)),
-    rgba(9, 13, 24, 0.9);
-  transform: rotateY(180deg) translateZ(36px);
-  border: 1px solid rgba(76, 255, 224, 0.3);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    inset 0 0 40px rgba(76, 255, 224, 0.1),
-    0 20px 60px rgba(0, 0, 0, 0.4);
+  transform: rotateY(180deg) translateZ(20px);
+  background: rgba(5, 7, 14, 0.98); 
+  border-color: rgba(0, 255, 213, 0.15);
 }
 
-.cylinder-face-side-a,
-.cylinder-face-side-b {
-  display: none;
-}
-
-.cylinder-slab-edge {
-  position: absolute;
-  bottom: -20px;
-  left: 0;
-  right: 0;
-  height: 20px;
-  background: linear-gradient(
-    180deg,
-    rgba(76, 255, 224, 0.6) 0%,
-    rgba(78, 255, 228, 0.4) 30%,
-    rgba(69, 137, 255, 0.35) 60%,
-    rgba(40, 80, 140, 0.5) 100%
-  );
-  border-radius: 4px 4px 12px 12px;
-  transform: translateZ(32px);
-  pointer-events: none;
-  filter: drop-shadow(0 12px 32px rgba(0, 0, 0, 0.7)) drop-shadow(0 -8px 16px rgba(69, 137, 255, 0.3));
-  box-shadow:
-    inset 0 6px 12px rgba(255, 255, 255, 0.25),
-    inset 0 -4px 8px rgba(0, 0, 0, 0.8),
-    inset 1px 0 2px rgba(76, 255, 224, 0.4),
-    inset -1px 0 2px rgba(0, 0, 0, 0.4),
-    0 12px 28px rgba(76, 255, 224, 0.4);
-}
-
-.cylinder-slab-edge::before {
-  content: "";
-  position: absolute;
-  bottom: -8px;
-  left: 2px;
-  right: 2px;
-  height: 10px;
-  background: linear-gradient(
-    180deg,
-    rgba(76, 255, 224, 0.5),
-    rgba(69, 137, 255, 0.25),
-    rgba(20, 40, 80, 0.6)
-  );
-  border-radius: 0 0 8px 8px;
-  filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.6));
-  box-shadow:
-    inset 0 4px 8px rgba(255, 255, 255, 0.2),
-    inset 0 -2px 4px rgba(0, 0, 0, 0.7);
-}
-
-.cylinder-slab-edge::after {
-  content: "";
-  position: absolute;
-  bottom: -18px;
-  left: 4px;
-  right: 4px;
-  height: 8px;
-  background: linear-gradient(
-    180deg,
-    rgba(76, 255, 224, 0.4),
-    rgba(20, 40, 80, 0.8)
-  );
-  border-radius: 0 0 6px 6px;
-  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.7));
-  box-shadow:
-    inset 0 2px 4px rgba(255, 255, 255, 0.15),
-    inset 0 -1px 2px rgba(0, 0, 0, 0.8);
-}
+/* =============================================== */
 
 .future-final-cta {
   padding: 0 24px 160px;
@@ -1726,8 +1621,11 @@ canvas {
 }
 
 /* Responsive */
-
 @media (max-width: 1100px) {
+  .cylinder-scene {
+    perspective-origin: 68% 50%; /* Aligns with shifted axis */
+  }
+
   .future-hero-layout {
     grid-template-columns: 1fr;
     padding-top: 40px;
@@ -1769,11 +1667,66 @@ canvas {
     left: 40px;
     max-width: 440px;
   }
+
+  .cylinder-core,
+  .cylinder-item {
+    left: 68%;
+  }
 }
 
 @media (max-width: 900px) {
   .page {
     padding: 20px;
+  }
+
+  .cylinder-scene {
+    perspective-origin: 50% 50%;
+    min-height: 100vh;
+    width: 100%;
+    z-index: 1;
+  }
+
+  .cylinder-feature-stage {
+    min-height: 100vh;
+    padding: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  /* MOBILE-ONLY TARGET CENTERING OVERRIDES */
+  .cylinder-core {
+    left: 50% !important;
+    top: 47.5% !important; /* ADJUSTED UPWARD FOR MOBILE PREVIEW BALANCING */
+  }
+
+  .cylinder-item {
+    left: 50% !important;
+    top: 46% !important;
+  }
+
+  .cylinder-copy {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    transform: none;
+    width: 100%;
+    max-width: 100%;
+    text-align: left;
+    padding: 0 24px;
+    z-index: 10;
+    margin: 0;
+  }
+
+  .cylinder-copy h2 {
+    max-width: 11ch;
+    margin-left: 0;
+    margin-right: 0;
+    font-size: clamp(28px, 8vw, 42px);
+  }
+
+  .cylinder-copy .future-text {
+    margin-left: 0;
+    margin-right: 0;
   }
 
   .future-nav {
@@ -1929,39 +1882,6 @@ canvas {
   .cylinder-feature-stage {
     min-height: auto;
     padding: 44px 0 0;
-  }
-
-  .cylinder-copy {
-    position: relative;
-    top: auto;
-    left: auto;
-    max-width: 100%;
-    padding: 0 20px 28px;
-  }
-
-  .cylinder-copy h2 {
-    max-width: 11ch;
-  }
-
-  .cylinder-scene {
-    min-height: 760px;
-  }
-
-  .cylinder-item {
-    width: min(260px, calc(100vw - 36px));
-  }
-
-  .cylinder-face {
-    padding: 18px;
-  }
-
-  .cylinder-face h3 {
-    font-size: clamp(16px, 5vw, 20px);
-  }
-
-  .cylinder-face-front,
-  .cylinder-face-back {
-    padding: 18px;
   }
 }
 
